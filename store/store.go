@@ -6,20 +6,20 @@ import (
 )
 
 var (
-	cfg config.Configer
+	cfg   config.Configer
 	store sync.Map // register module
 )
 
-func SetConfig(cfg config.Configer)  {
-	cfg = cfg
+func SetConfig(c config.Configer) {
+	cfg = c
 }
 
 func Config() config.Configer {
 	return cfg
 }
 
-func RegisterModule(module string)  {
-	store.Store(module,true)
+func RegisterModule(module string) {
+	store.Store(module, true)
 }
 
 func Range(fn func(name string, flag bool) bool) {
@@ -27,4 +27,3 @@ func Range(fn func(name string, flag bool) bool) {
 		return fn(key.(string), val.(bool))
 	})
 }
-

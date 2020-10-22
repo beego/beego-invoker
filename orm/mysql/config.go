@@ -3,6 +3,7 @@ package mysql
 import (
 	"github.com/astaxie/beego/client/orm"
 	"github.com/beego/invoker/store"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 const module = "orm.mysql"
@@ -30,7 +31,7 @@ func DefaultConfig() *Config {
 func Invoker(key string) *Config {
 	var dc = DefaultConfig()
 	dc.beegoUniqueKey = key
-	dc.err = store.Config().Unmarshaler(key, &dc)
+	dc.err = store.Config().Unmarshaler(key, dc)
 	return dc
 }
 
