@@ -53,7 +53,7 @@ func (c *Config) Build() (o orm.Ormer, err error) {
 		return
 	}
 	o = orm.NewOrmUsingDB(c.AliasName)
-	instances.Store(c.beegoUniqueKey, o)
+	DefaultInstances.Store(c.beegoUniqueKey, o)
 	return
 }
 
